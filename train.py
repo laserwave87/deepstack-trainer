@@ -49,11 +49,11 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
         Path(opt.save_dir), opt.epochs, opt.batch_size, opt.total_batch_size, opt.weights, opt.global_rank
 
     # Directories
-    wdir = save_dir / 'weights'
+    wdir = / 'content' / 'drive' / 'MyDrive' /' train-runs' / 'exp' / 'weights'
     wdir.mkdir(parents=True, exist_ok=True)  # make dir
     last = wdir / 'last.pt'
     best = wdir / 'best.pt'
-    results_file = save_dir / 'results.txt'
+    results_file = wdir / 'results.txt'
 
     # Save run settings
     with open(save_dir / 'hyp.yaml', 'w') as f:
@@ -456,21 +456,21 @@ if __name__ == '__main__':
 
     if os.path.exists(train_path) == False:
         train_path = opt.dataset_path
-    
+
     if os.path.exists(val_path) == False:
         val_path = train_path
 
     if opt.classes == "":
-        classes_file = os.path.join(train_path,"classes.txt") 
-        
+        classes_file = os.path.join(train_path,"classes.txt")
+
         with open(classes_file,"r") as f:
             classes = f.read()
-        
+
         classnames = classes.split("\n")
     else:
         classnames = classes.split(",")
-        classnames = opt.classes 
-    
+        classnames = opt.classes
+
     data_dict = {"train":train_path, "val":val_path,"nc":len(classnames),"names":classnames}
 
     opt.data = data_dict
