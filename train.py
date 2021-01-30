@@ -49,11 +49,11 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
         Path(opt.save_dir), opt.epochs, opt.batch_size, opt.total_batch_size, opt.weights, opt.global_rank
 
     # Directories
-    wdir = Path('/content/drive/MyDrive/collab_out')
+    wdir = Path('/content/drive/MyDrive/collab_out/weights')
     wdir.mkdir(parents=True, exist_ok=True)  # make dir
     last = wdir / 'last.pt'
     best = wdir / 'best.pt'
-    results_file = wdir / 'results.txt'
+    results_file = save_dir / 'results.txt'
 
     # Save run settings
     with open(save_dir / 'hyp.yaml', 'w') as f:
