@@ -49,7 +49,7 @@ def train(hyp, opt, device, tb_writer=None, wandb=None):
         Path(opt.save_dir), opt.epochs, opt.batch_size, opt.total_batch_size, opt.weights, opt.global_rank
 
     # Directories
-    wdir = Path('/content/drive/MyDrive/colab_out/weights')
+    wdir = Path('G:/My Drive/colab_out/weights')
     wdir.mkdir(parents=True, exist_ok=True)  # make dir
     last = wdir / 'last.pt'
     best = wdir / 'best.pt'
@@ -449,7 +449,7 @@ if __name__ == '__main__':
 
     if opt.project == "":
         project_name = os.path.basename(opt.dataset_path)
-        opt.project = "/content/drive/MyDrive/colab_out/train-runs/"+project_name
+        opt.project = "G:/My Drive/colab_out/train-runs/"+project_name
 
     train_path = os.path.join(opt.dataset_path,"train")
     val_path = os.path.join(opt.dataset_path,"test")
